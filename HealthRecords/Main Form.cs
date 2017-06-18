@@ -15,6 +15,19 @@ namespace HealthRecords
         public frmMain()
         {
             InitializeComponent();
+
+            //Populate combo boxes for height and weight...:     
+            //Height:
+            for (int i = 12; i < 120; i++)
+            {
+                cmbHeight.Items.Add(i);
+            }
+
+            //Weight:
+            for (int i = 1; i < 600; i++)
+            {
+                cmbLBS.Items.Add(i);
+            }
         }
 
         //Calc functions:
@@ -22,32 +35,43 @@ namespace HealthRecords
         {
             HealthProfile hp = new HealthProfile();
 
-            //hp.FName = txtFName.Text;
-            //hp.LName = txtLName.Text;
+            hp.FName = txtFName.Text;
+            hp.LName = txtLName.Text;
 
-            //rdo buttons....
+            if (rdoMale.Checked)
+            {
+                hp.IsMale = true;
+            }
 
+            if (rdoFemale.Checked)
+            {
+                hp.IsFemale = true;
+            }
+
+            //Datetime picker:
             hp.Year = dateTimePicker1.Value.Year;
             hp.DobDayOfYear = dateTimePicker1.Value.DayOfYear;
-
-            //hp.InchesHeight = Convert.ToInt32(txtHeight.Text);
-            //hp.LBS = Convert.ToInt32(txtLBS.Text);
-
             lblAge.Text = hp.GetAge();
- 
+
+            //Gets selected item from combo boxes:
+            Object selectedItem = cmbHeight.SelectedItem;
+            hp.InchesHeight = Convert.ToInt32(selectedItem.ToString());
+
+            Object selectedItem2 = cmbLBS.SelectedItem;
+            hp.LBS = Convert.ToInt32(selectedItem2.ToString());
         }
 
+        //Exit button:
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Clear button:
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtFName.Clear();
-            txtLName.Clear();
-            txtHeight.Clear();
-            txtLBS.Clear();
+            txtLName.Clear(); 
 
             dateTimePicker1.ResetText();
 
@@ -59,26 +83,26 @@ namespace HealthRecords
             lblTargetHeartRate.Text = "";
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+            //...no code here...
         }
 
-        //Height only accepts whole numbers:
-        private void txtHeight_TextChanged(object sender, EventArgs e)
+        //FName only accepts letters and spaces:
+        private void txtFName_TextChanged(object sender, EventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtHeight.Text, "^[0-9]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtFName.Text, "^[a-zA-Z ]+$"))
             {
-                txtHeight.Clear();
+                txtFName.Clear();
             }
         }
 
-        //Weight only accepts whole numbers:
-        private void txtLBS_TextChanged(object sender, EventArgs e)
+        //LName only accepts letters and spaces:
+        private void txtLName_TextChanged(object sender, EventArgs e)
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(txtLBS.Text, "^[0-9]"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtLName.Text, "^[a-zA-Z ]+$"))
             {
-                txtLBS.Clear();
+                txtLName.Clear();
             }
         }
     }

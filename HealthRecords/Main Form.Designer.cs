@@ -30,7 +30,6 @@
         {
             this.txtFName = new System.Windows.Forms.TextBox();
             this.txtLName = new System.Windows.Forms.TextBox();
-            this.txtLBS = new System.Windows.Forms.TextBox();
             this.lblFName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,9 +46,10 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdoMale = new System.Windows.Forms.RadioButton();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
-            this.txtHeight = new System.Windows.Forms.TextBox();
+            this.rdoMale = new System.Windows.Forms.RadioButton();
+            this.cmbLBS = new System.Windows.Forms.ComboBox();
+            this.cmbHeight = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(199, 20);
             this.txtFName.TabIndex = 0;
+            this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             // 
             // txtLName
             // 
@@ -66,14 +67,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(199, 20);
             this.txtLName.TabIndex = 1;
-            // 
-            // txtLBS
-            // 
-            this.txtLBS.Location = new System.Drawing.Point(76, 182);
-            this.txtLBS.Name = "txtLBS";
-            this.txtLBS.Size = new System.Drawing.Size(199, 20);
-            this.txtLBS.TabIndex = 7;
-            this.txtLBS.TextChanged += new System.EventHandler(this.txtLBS_TextChanged);
+            this.txtLName.TextChanged += new System.EventHandler(this.txtLName_TextChanged);
             // 
             // lblFName
             // 
@@ -212,7 +206,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 22;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // groupBox1
             // 
@@ -223,17 +217,6 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 55);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
-            // 
-            // rdoMale
-            // 
-            this.rdoMale.AutoSize = true;
-            this.rdoMale.Location = new System.Drawing.Point(34, 19);
-            this.rdoMale.Name = "rdoMale";
-            this.rdoMale.Size = new System.Drawing.Size(48, 17);
-            this.rdoMale.TabIndex = 0;
-            this.rdoMale.TabStop = true;
-            this.rdoMale.Text = "Male";
-            this.rdoMale.UseVisualStyleBackColor = true;
             // 
             // rdoFemale
             // 
@@ -246,19 +229,40 @@
             this.rdoFemale.Text = "Female";
             this.rdoFemale.UseVisualStyleBackColor = true;
             // 
-            // txtHeight
+            // rdoMale
             // 
-            this.txtHeight.Location = new System.Drawing.Point(76, 155);
-            this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new System.Drawing.Size(199, 20);
-            this.txtHeight.TabIndex = 6;
-            this.txtHeight.TextChanged += new System.EventHandler(this.txtHeight_TextChanged);
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Location = new System.Drawing.Point(34, 19);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.Size = new System.Drawing.Size(48, 17);
+            this.rdoMale.TabIndex = 0;
+            this.rdoMale.TabStop = true;
+            this.rdoMale.Text = "Male";
+            this.rdoMale.UseVisualStyleBackColor = true;
+            // 
+            // cmbLBS
+            // 
+            this.cmbLBS.FormattingEnabled = true;
+            this.cmbLBS.Location = new System.Drawing.Point(76, 183);
+            this.cmbLBS.Name = "cmbLBS";
+            this.cmbLBS.Size = new System.Drawing.Size(200, 21);
+            this.cmbLBS.TabIndex = 25;
+            // 
+            // cmbHeight
+            // 
+            this.cmbHeight.FormattingEnabled = true;
+            this.cmbHeight.Location = new System.Drawing.Point(76, 156);
+            this.cmbHeight.Name = "cmbHeight";
+            this.cmbHeight.Size = new System.Drawing.Size(199, 21);
+            this.cmbHeight.TabIndex = 24;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 502);
+            this.ClientSize = new System.Drawing.Size(284, 488);
+            this.Controls.Add(this.cmbLBS);
+            this.Controls.Add(this.cmbHeight);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnExit);
@@ -275,8 +279,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblFName);
-            this.Controls.Add(this.txtLBS);
-            this.Controls.Add(this.txtHeight);
             this.Controls.Add(this.txtLName);
             this.Controls.Add(this.txtFName);
             this.Name = "frmMain";
@@ -293,7 +295,6 @@
 
         private System.Windows.Forms.TextBox txtFName;
         private System.Windows.Forms.TextBox txtLName;
-        private System.Windows.Forms.TextBox txtLBS;
         private System.Windows.Forms.Label lblFName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -312,7 +313,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdoFemale;
         private System.Windows.Forms.RadioButton rdoMale;
-        private System.Windows.Forms.TextBox txtHeight;
+        private System.Windows.Forms.ComboBox cmbLBS;
+        private System.Windows.Forms.ComboBox cmbHeight;
     }
 }
 

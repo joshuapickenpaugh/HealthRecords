@@ -23,11 +23,18 @@ namespace HealthRecords
             set { _LName = value; }
         }
 
-        private char _Gender;
-        public char Gender
+        private bool _IsMale = false;
+        public bool IsMale
         {
-            get { return _Gender; }
-            set { _Gender = value; }
+            get { return _IsMale; }
+            set { _IsMale = value; }
+        }
+
+        private bool _IsFemale = false;
+        public bool IsFemale
+        {
+            get { return _IsFemale; }
+            set { _IsFemale = value; }
         }
 
         private int _Month;
@@ -45,7 +52,6 @@ namespace HealthRecords
         }
 
         private int _Year;
-
         public int Year
         {
             get { return _Year; }
@@ -53,7 +59,6 @@ namespace HealthRecords
         }
 
         private int _DobDayOfYear;
-
         public int DobDayOfYear
         {
             get { return _DobDayOfYear; }
@@ -91,10 +96,5 @@ namespace HealthRecords
 
             return strAge;
         }
-
-
-
-
-
     }
 }
