@@ -58,6 +58,13 @@ namespace HealthRecords
             set { _Year = value; }
         }
 
+        private int _Age;
+        public int Age
+        {
+            get { return _Age; }
+            set { _Age = value; }
+        }
+
         private int _DobDayOfYear;
         public int DobDayOfYear
         {
@@ -80,21 +87,39 @@ namespace HealthRecords
             set { _LBS = value; }
         }
 
+        private double _MaxHeartRate;
+        public double MaxHeartRate
+        {
+            get { return _MaxHeartRate;; }
+            set { _MaxHeartRate = value; }
+        }
+
+        private double _HighTargetHeartRate;
+        public double HighTargetHeartRate
+        {
+            get { return _HighTargetHeartRate;; }
+            set { _HighTargetHeartRate = value; }
+        }
+
+        private double _LowTargetHeartRate;
+        public double LowTargetHeartRate
+        {
+            get { return _LowTargetHeartRate; }
+            set { _LowTargetHeartRate = value; }
+        }
+
         //Gets age:
         public string GetAge()
         {
-            int intAge = 0;
-            string strAge;
+            string str;
 
-            intAge = DateTime.Now.Year - Year;
+            Age = DateTime.Now.Year - Year;
             if (DateTime.Now.DayOfYear < DobDayOfYear)
             {
-                intAge = intAge - 1;
-            }            
+                Age = Age - 1;
+            }
 
-            strAge = "Age is: " + Convert.ToString(intAge);
-
-            return strAge;
+            return str = "Age is: " + Convert.ToString(Age); 
         }
 
         //Gets BMI:
@@ -102,32 +127,53 @@ namespace HealthRecords
         {
             const double BMI_NUMBER = 703;
             double dblBMI = 0;
-            string strBMI;
+            string str;
 
             dblBMI = BMI_NUMBER * (LBS / InchesHeight / InchesHeight);
-            dblBMI = Math.Round(dblBMI, 1);
+            dblBMI = Math.Round(dblBMI, 1, MidpointRounding.AwayFromZero);
 
             //Returns BMI with weight message:
             if (dblBMI < 18.5)
             {
-                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". UNDERWEIGHT.";
-                return strBMI;
+                return str = "BMI is: " + Convert.ToString(dblBMI) + ". UNDERWEIGHT."; 
             }
             if (dblBMI >= 18.5 && dblBMI <= 24.9)
             {
-                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". HEALTHY WEIGHT.";
-                return strBMI;
+                return str = "BMI is: " + Convert.ToString(dblBMI) + ". HEALTHY WEIGHT."; 
             }
             if (dblBMI >= 25 && dblBMI <= 29.9)
             {
-                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". OVERWEIGHT.";
-                return strBMI;
+                return str = "BMI is: " + Convert.ToString(dblBMI) + ". OVERWEIGHT."; 
             }
             else
             {
-                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". OBESE.";
-                return strBMI;
+                return str = "BMI is: " + Convert.ToString(dblBMI) + ". OBESE."; 
             }
+        }
+
+        //Gets Max Heart Rate:
+        public string GetMaxHeartRate()
+        {
+            const double MAX_HEART_RATE_VALUE = 220;
+            string str = "";
+
+            MaxHeartRate = MAX_HEART_RATE_VALUE - Age;
+
+            return str = "Max heart rate is: " + Convert.ToString(MaxHeartRate) + ".";
+        }
+
+        //Gets Target Heart Rate range:
+        public string GetTargetHeartRateRange()
+        {
+            const double HIGH_TARGET = .85;
+            const double LOW_TARGET = .5;
+            string str;
+
+            HighTargetHeartRate = MaxHeartRate * HIGH_TARGET;
+            LowTargetHeartRate = MaxHeartRate * LOW_TARGET;
+
+            return str = "High target HR: " + Convert.ToString(HighTargetHeartRate) + 
+                ". Low target HR: " + Convert.ToString(LowTargetHeartRate) + ".";              
         }
     }
 }

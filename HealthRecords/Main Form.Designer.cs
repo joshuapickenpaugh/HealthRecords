@@ -41,7 +41,6 @@
             this.lblBMI = new System.Windows.Forms.Label();
             this.lblMaxHeartRate = new System.Windows.Forms.Label();
             this.lblTargetHeartRate = new System.Windows.Forms.Label();
-            this.lblBMIValuesChart = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -126,7 +125,7 @@
             // btnCalc
             // 
             this.btnCalc.BackColor = System.Drawing.Color.Lime;
-            this.btnCalc.Location = new System.Drawing.Point(6, 426);
+            this.btnCalc.Location = new System.Drawing.Point(7, 356);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(270, 23);
             this.btnCalc.TabIndex = 14;
@@ -170,18 +169,10 @@
             this.lblTargetHeartRate.TabIndex = 18;
             this.lblTargetHeartRate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBMIValuesChart
-            // 
-            this.lblBMIValuesChart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBMIValuesChart.Location = new System.Drawing.Point(7, 355);
-            this.lblBMIValuesChart.Name = "lblBMIValuesChart";
-            this.lblBMIValuesChart.Size = new System.Drawing.Size(269, 63);
-            this.lblBMIValuesChart.TabIndex = 19;
-            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.Yellow;
-            this.btnClear.Location = new System.Drawing.Point(6, 455);
+            this.btnClear.Location = new System.Drawing.Point(7, 385);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(163, 23);
             this.btnClear.TabIndex = 20;
@@ -192,7 +183,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Tomato;
-            this.btnExit.Location = new System.Drawing.Point(175, 455);
+            this.btnExit.Location = new System.Drawing.Point(176, 385);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(101, 23);
             this.btnExit.TabIndex = 21;
@@ -260,14 +251,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 488);
+            this.ClientSize = new System.Drawing.Size(284, 413);
             this.Controls.Add(this.cmbLBS);
             this.Controls.Add(this.cmbHeight);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.lblBMIValuesChart);
             this.Controls.Add(this.lblTargetHeartRate);
             this.Controls.Add(this.lblMaxHeartRate);
             this.Controls.Add(this.lblBMI);
@@ -306,7 +296,6 @@
         private System.Windows.Forms.Label lblBMI;
         private System.Windows.Forms.Label lblMaxHeartRate;
         private System.Windows.Forms.Label lblTargetHeartRate;
-        private System.Windows.Forms.Label lblBMIValuesChart;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Joshua Pickenpaugh
+//June 19th, 2017.
+//Health Records calc. 
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +69,12 @@ namespace HealthRecords
 
             //Displays BMI:
             lblBMI.Text = hp.GetBMI();
+            
+            //Displays Max Heart Rate:
+            lblMaxHeartRate.Text = hp.GetMaxHeartRate();
+
+            //Displays Target Heart Rate Range:
+            lblTargetHeartRate.Text = hp.GetTargetHeartRateRange();
         }
 
         //Exit button:
@@ -83,7 +93,6 @@ namespace HealthRecords
 
             lblAge.Text = "";
             lblBMI.Text = "";
-            lblBMIValuesChart.Text = "";
             lblFName.Text = "";
             lblMaxHeartRate.Text = "";
             lblTargetHeartRate.Text = "";
