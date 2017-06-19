@@ -66,15 +66,15 @@ namespace HealthRecords
         }
 
 
-        private int _InchesHeight;
-        public int InchesHeight
+        private double _InchesHeight;
+        public double InchesHeight
         {
             get { return _InchesHeight; }
             set { _InchesHeight = value; }
         }
 
-        private int _LBS;
-        public int LBS
+        private double _LBS;
+        public double LBS
         {
             get { return _LBS; }
             set { _LBS = value; }
@@ -92,9 +92,42 @@ namespace HealthRecords
                 intAge = intAge - 1;
             }            
 
-            strAge = Convert.ToString(intAge);
+            strAge = "Age is: " + Convert.ToString(intAge);
 
             return strAge;
+        }
+
+        //Gets BMI:
+        public string GetBMI()
+        {
+            const double BMI_NUMBER = 703;
+            double dblBMI = 0;
+            string strBMI;
+
+            dblBMI = BMI_NUMBER * (LBS / InchesHeight / InchesHeight);
+            dblBMI = Math.Round(dblBMI, 1);
+
+            //Returns BMI with weight message:
+            if (dblBMI < 18.5)
+            {
+                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". UNDERWEIGHT.";
+                return strBMI;
+            }
+            if (dblBMI >= 18.5 && dblBMI <= 24.9)
+            {
+                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". HEALTHY WEIGHT.";
+                return strBMI;
+            }
+            if (dblBMI >= 25 && dblBMI <= 29.9)
+            {
+                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". OVERWEIGHT.";
+                return strBMI;
+            }
+            else
+            {
+                strBMI = "BMI is: " + Convert.ToString(dblBMI) + ". OBESE.";
+                return strBMI;
+            }
         }
     }
 }

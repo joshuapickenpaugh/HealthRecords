@@ -16,7 +16,7 @@ namespace HealthRecords
         {
             InitializeComponent();
 
-            //Populate combo boxes for height and weight...:     
+            //Populates combo boxes for height and weight...:     
             //Height:
             for (int i = 12; i < 120; i++)
             {
@@ -35,9 +35,11 @@ namespace HealthRecords
         {
             HealthProfile hp = new HealthProfile();
 
+            //Name entry:
             hp.FName = txtFName.Text;
             hp.LName = txtLName.Text;
 
+            //Gender radio boxes selection:
             if (rdoMale.Checked)
             {
                 hp.IsMale = true;
@@ -48,17 +50,21 @@ namespace HealthRecords
                 hp.IsFemale = true;
             }
 
-            //Datetime picker:
+            //Datetime picker, displays age:
             hp.Year = dateTimePicker1.Value.Year;
             hp.DobDayOfYear = dateTimePicker1.Value.DayOfYear;
             lblAge.Text = hp.GetAge();
 
-            //Gets selected item from combo boxes:
+            //Gets selected item from combo boxes, assigns it to 
+            //the Health Profile object:
             Object selectedItem = cmbHeight.SelectedItem;
-            hp.InchesHeight = Convert.ToInt32(selectedItem.ToString());
+            hp.InchesHeight = Convert.ToDouble(selectedItem.ToString());
 
             Object selectedItem2 = cmbLBS.SelectedItem;
-            hp.LBS = Convert.ToInt32(selectedItem2.ToString());
+            hp.LBS = Convert.ToDouble(selectedItem2.ToString());
+
+            //Displays BMI:
+            lblBMI.Text = hp.GetBMI();
         }
 
         //Exit button:
